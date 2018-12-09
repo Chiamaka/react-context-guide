@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NamesContext } from './NamesStore';
 
 const NameWithRightHandEmoji = props => (
   <span role="img" aria-label="Africa" className="name">
@@ -10,9 +11,11 @@ class RightPanel extends Component {
     return (
       <div className="right-panel">
         <h2 className="name-title">Names</h2>
-        <NameWithRightHandEmoji>Chiamaka</NameWithRightHandEmoji>
-        <NameWithRightHandEmoji>Jane</NameWithRightHandEmoji>
-        <NameWithRightHandEmoji>Fred</NameWithRightHandEmoji>
+        <NamesContext.Consumer>
+          {({ names }) =>
+            names.map(name => <NameWithRightHandEmoji key={name}>{name}</NameWithRightHandEmoji>)
+          }
+        </NamesContext.Consumer>
       </div>
     );
   }

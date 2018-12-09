@@ -1,44 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Simple App Using Context in React
 
-## Available Scripts
+I've been running away from using the Context API for a while now (don't ask, I have no idea why). So after a while of fighting with myself, I decided that over lunch, I was going to read open source code and try to figure out what was going on.
 
-In the project directory, you can run:
+After one hour of reading and rummaging on the react docs, I built this app to give me an understanding of the context API and I'll be explaining my thought pattern here.
 
-### `npm start`
+This is a simple name taking app — you have a text box on the left, you write a name, press enter and the name appears on the right hand side.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I came up with the simplest design ever because i'm lazy, sue me. I broke down the app into components and got to work.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+{ Image of broken down app, image of app }
 
-### `npm test`
+## Context Time
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From the diagram, we have three components
 
-### `npm run build`
+- App (The general app container)
+  - LeftPanel (Child of App, Sibling to RightPanel)
+  - RightPanel (Child of App, Sibling to LeftPanel)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We want the RightPanel and the LeftPanel to communicate and the normal way is to "lift state". We put the state and the event handlers in the App component. This way would work but we are here for context.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Let's walk through how we would go about using context api
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Create the NameStore component
+   This would hold the state and the event handlers.
 
-### `npm run eject`
+2. Import createContext from 'react'
+   createContext is a function that takes in the default state and returns an object that contains the Provider and Consumer.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Provider and Consumer
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Provider broadcasts whatever value you give it and the Consumer consumes whatever values it gets. You can make any component a provider and allow any component consume the values that the provider is broadcasting (and the coolest thing is that whenever the state in the provider component changes, it is rebroadcasted and the consumers can consume the new change).
