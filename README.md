@@ -17,7 +17,7 @@ I came up with the simplest design ever because i'm lazy, sue me. I broke down t
 
 ### Run code
 
-- clone source code
+- run `git clone https://github.com/Chiamaka/react-context-guide.git`
 - cd into project
 - `npm start` to start up the project
 
