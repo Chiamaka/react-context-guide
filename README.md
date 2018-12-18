@@ -8,7 +8,8 @@ This is a simple name taking app — you have a text box on the left, you write 
 
 I came up with the simplest design ever because i'm lazy, sue me. I broke down the app into components and got to work.
 
-{ Image of broken down app, image of app }
+<img width="746" alt="app breakdown" src="https://user-images.githubusercontent.com/2737103/50175811-b517f500-02f5-11e9-8e06-397619df18dc.png">
+
 
 ## Context Time
 
