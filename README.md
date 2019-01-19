@@ -139,3 +139,7 @@ Likewise for the `RightPanel` – since this is where we would display the names
 ```
 
 _The `Consumer` component requires a function as a child_
+
+## Testing
+
+https://youtu.be/cp1BNxMNcVE
